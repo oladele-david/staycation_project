@@ -1,3 +1,11 @@
-.idea
-__pycache__
+# Ignore PyCharm/IntelliJ IDEA project files
+.idea/
+
+# Ignore Python cache files
+__pycache__/
+
+# Ignore virtual environment files
+.venv
+
+# Ignore environment files
 .env
