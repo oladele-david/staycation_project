@@ -7,8 +7,8 @@ hotel_bp = Blueprint('hotel', __name__)
 
 @hotel_bp.route('/')
 def get_hotels():
-    hotels = [{"name": "Hotel 1", "location": "Location 1"},{"name": "Hotel 2", "location": "Location 2"}]
-    return render_template("hotels.html", hotels=hotels)
+    return "List of hotels"
+
 
 @hotel_bp.route('/add')
 def add_hotel():

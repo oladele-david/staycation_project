@@ -19,7 +19,7 @@ def create_app():
     app.register_blueprint(main_bp)
     app.register_blueprint(user_bp, url_prefix='/users')
     app.register_blueprint(hotel_bp, url_prefix='/hotels')
-    app.register_blueprint(room_bp, url_prefix='/room')
+    app.register_blueprint(room_bp, url_prefix='/rooms')
     app.register_blueprint(auth_bp, url_prefix='/auth')
 
     return app

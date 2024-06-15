@@ -3,7 +3,7 @@ from app.extensions import db
 
 
 class Booking(db.Model):
-    """Booking model for storing booking related details """
+    """Booking model for storing bookings related details """
 
     __tablename__ = 'bookings'
     id = db.Column(db.Integer, primary_key=True)
