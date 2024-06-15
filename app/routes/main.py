@@ -5,7 +5,9 @@ main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/')
 def index():
-    return "Hello, this is the main route."
+    name = "Michael"
+    return render_template("index.html", name=name)
+    #return "Hello, this is the main route."
 
 
 @main_bp.route('/about')
