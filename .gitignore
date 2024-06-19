@@ -1,6 +1,12 @@
 # Ignore PyCharm/IntelliJ IDEA project files
 .idea/
 
+# Ignore backup-repository folder
+backup-repository.git/
+
+# Ignore Visual Studio Code project files
+.vscode/
+
 # Ignore Python cache files
 __pycache__/
 

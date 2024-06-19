@@ -2,6 +2,11 @@
 {% block title %}Home{% endblock %}
 {% block content %}
     <h2>Home</h2>
-    <p>Welcome to the home page! {{name}}</p>
+    <p>Welcome to the home page! {{ name | upper }}</p>
+    <p>Your Email is = {{email}}</p>
+
+    <a href="{{ url_for('auth.logout') }}">Logout</a>
+    <a href="{{ url_for('auth.logout') }}">Login</a>
+    <a href="{{ url_for('auth.register') }}">Signup</a>
 
 {% endblock %}

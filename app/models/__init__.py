@@ -4,3 +4,6 @@ from .room import Room
 from .booking import Booking
 from .facilities import Facility
 from .rules import Rule
+from .country import Country
+from .state import State
+from .city import City

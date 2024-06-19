@@ -2,9 +2,10 @@ from flask import Flask
 import pymysql
 
 pymysql.install_as_MySQLdb()
+
 from .extensions import db, migrate, login_manager
 from .routes import main_bp, user_bp, hotel_bp, room_bp
-from .auth import auth_bp
+from app.routes.auth import auth_bp
 
 
 def create_app():
