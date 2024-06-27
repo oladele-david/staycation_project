@@ -18,4 +18,16 @@ def index():
 
 @main_bp.route('/about')
 def about():
-    return "Hello, this is the about route."
+    if current_user.is_authenticated:
+        name = current_user.username  # Assuming 'username' is an attribute of your User model
+        email = current_user.email
+    else:
+        name = "Guest"
+        email = None
+    return render_template("main/about.html", name=name, email=email)
+
+
+@main_bp.route('/contact')
+def contact():
+    return render_template("main/contact.html")
+

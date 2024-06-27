@@ -1,26 +1,76 @@
-<!doctype html>
+<!-- templates/base.html -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <title>STAYCATION</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Home - Beyond Hotel{% endblock %}</title>
+
+    <!-- favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='assets/img/logo-favicon.png') }}" sizes="16x16" type="icon/png">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/line-awesome.min.css') }}">
+    <!-- Animate Css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/animate.css') }}">
+    <!-- Slick Slider Css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/slick.css') }}">
+    <!-- Magnific Popup Css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/magnific-popup.css') }}">
+    <!-- Flat Picker Css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/flatpicker.css') }}">
+    <!-- TellInput Css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/intlTelInput.css') }}">
+    <!-- Nice Select Css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/nice-select.css') }}">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
 </head>
 <body>
-<nav>
-    <!-- Navigation links -->
-</nav>
+    {% include 'components/header.html' %}
+    {% block content %}{% endblock %}
+    {% include 'components/footer.html' %}
 
-{% with messages = get_flashed_messages(with_categories=true) %}
-{% if messages %}
-<ul>
-    {% for category, message in messages %}
-    <li class="flash-{{ category }}">{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-{% endwith %}
+    <!-- back to top area start -->
+    <div class="back-to-top">
+        <span class="back-top"> <i class="las la-angle-up"></i> </span>
+    </div>
+    <!-- back to top area end -->
 
-{% block content %}{% endblock %}
+    <!-- Mouse Cursor start -->
+    <div class="mouse-move mouse-outer"></div>
+    <div class="mouse-move mouse-inner"></div>
+    <!-- Mouse Cursor Ends -->
+
+
+    <!-- jquery -->
+    <script src="{{ url_for('static', filename='assets/js/jquery-3.6.0.min.js') }}"></script>
+    <!-- jquery Migrate -->
+    <script src="{{ url_for('static', filename='assets/js/jquery-migrate.min.js') }}"></script>
+    <!-- bootstrap -->
+    <script src="{{ url_for('static', filename='assets/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- Wow Js -->
+    <script src="{{ url_for('static', filename='assets/js/wow.js') }}"></script>
+    <!-- Slick Js -->
+    <script src="{{ url_for('static', filename='assets/js/slick.js') }}"></script>
+    <!-- ImageLoaded Js -->
+    <script src="{{ url_for('static', filename='assets/js/imagesloaded.pkgd.min.js') }}"></script>
+    <!-- Isotope Js -->
+    <script src="{{ url_for('static', filename='assets/js/isotope.pkgd.min.js') }}"></script>
+    <!-- Magnific Popup Js -->
+    <script src="{{ url_for('static', filename='assets/js/jquery.magnific-popup.js') }}"></script>
+    <!-- Nice Select Js -->
+    <script src="{{ url_for('static', filename='assets/js/jquery.nice-select.js') }}"></script>
+    <!-- Flat Picker Js -->
+    <script src="{{ url_for('static', filename='assets/js/flatpicker.js') }}"></script>
+    <!-- Range Slider Js -->
+    <script src="{{ url_for('static', filename='assets/js/nouislider-8.5.1.min.js') }}"></script>
+    <!-- TellInput Js -->
+    <script src="{{ url_for('static', filename='assets/js/intlTelInput.js') }}"></script>
+    <!-- main js -->
+    <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
 </body>
 </html>

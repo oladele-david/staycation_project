@@ -1,0 +1,43 @@
+<!-- templates/components/header.html -->
+<header class="header-style-01">
+    <!-- Menu area Starts -->
+    <nav class="navbar navbar-area navbar-border navbar-padding navbar-expand-lg">
+        <div class="container custom-container-one nav-container">
+            <div class="logo-wrapper">
+                <a href="{{url_for('main.index')}}" class="logo">
+                    <img src="{{ url_for('static', filename='assets/img/logo.png') }}" alt="">
+                </a>
+            </div>
+            <div class="responsive-mobile-menu d-lg-none">
+                <a href="javascript:void(0)" class="click-nav-right-icon">
+                    <i class="las la-ellipsis-v"></i>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#hotel_booking_menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="hotel_booking_menu">
+                <ul class="navbar-nav">
+
+                    <li><a href="{{url_for('main.index')}}">WebTop</a></li>
+                    <li><a href="{{url_for('main.about')}}">About</a></li>
+                    <li><a href="{{url_for('room.get_rooms')}}">Rooms</a></li>
+                    <li><a href="{{ url_for('main.contact') }}">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="navbar-right-content show-nav-content">
+                <div class="single-right-content">
+                    <div class="navbar-right-flex">
+                        <div class="navbar-right-btn">
+                            <a href="{{ url_for('auth.login') }}">Log In</a>
+                        </div>
+                        <div class="btn-wrapper">
+                            <a href="{{ url_for('auth.register') }}" class="cmn-btn btn-bg-1 radius-10">Sign Up</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Menu area end -->
+</header>
