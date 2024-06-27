@@ -29,7 +29,7 @@ class User(UserMixin, db.Model):
     is_admin = db.Column(db.Boolean, default=False)
 
     def __repr__(self):
-        return f'<User {self.username}>, {self.email}, {self.created_at}'
+        return f'<User {self.first_name}>, {self.email}, {self.created_at}'
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)

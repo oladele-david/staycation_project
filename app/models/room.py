@@ -6,6 +6,7 @@ class Room(db.Model):
 
     __tablename__ = 'rooms'
     id = db.Column(db.Integer, primary_key=True)
+    room_number = db.Column(db.String(10), nullable=False)
     room_type = db.Column(db.String(128), nullable=False)  # Specify length
     description = db.Column(db.String(512))  # Specify length
     size = db.Column(db.String(64), nullable=False)  # Specify length
