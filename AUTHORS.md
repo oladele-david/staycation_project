@@ -11,7 +11,7 @@ This project is a collective effort by the following individuals:
 - **Oladele David Temidayo**
   - Email: tdboy59@gmail.com
 
-- **Ismail Olayemi**
+- **Ismail Olayemi Oladimeji**
   - Email: easydigitalkoncept@gmail.com
 
 - **Mercy Akpan**
