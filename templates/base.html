@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}Home - Beyond Hotel{% endblock %}</title>
 
     <!-- favicon -->
-    <link rel="icon" href="{{ url_for('static', filename='assets/img/logo-favicon.png') }}" sizes="16x16" type="icon/png">
+    <link rel="icon" href="{{ url_for('static', filename='assets/img/logo-favicon.png') }}" sizes="16x16"
+          type="icon/png">
     <!-- bootstrap -->
     <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
     <!-- FontAwesome -->
@@ -30,47 +31,61 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
 </head>
 <body>
-    {% include 'components/header.html' %}
-    {% block content %}{% endblock %}
-    {% include 'components/footer.html' %}
+{% include 'components/header.html' %}
 
-    <!-- back to top area start -->
-    <div class="back-to-top">
-        <span class="back-top"> <i class="las la-angle-up"></i> </span>
-    </div>
-    <!-- back to top area end -->
+{#Flashed Messages#}
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show mt-2" role="alert">
+                <strong>{{ category | title }}!</strong> {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                        aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
 
-    <!-- Mouse Cursor start -->
-    <div class="mouse-move mouse-outer"></div>
-    <div class="mouse-move mouse-inner"></div>
-    <!-- Mouse Cursor Ends -->
+{% block content %}{% endblock %}
+{% include 'components/footer.html' %}
+
+<!-- back to top area start -->
+<div class="back-to-top">
+    <span class="back-top"> <i class="las la-angle-up"></i> </span>
+</div>
+<!-- back to top area end -->
+
+<!-- Mouse Cursor start -->
+<div class="mouse-move mouse-outer"></div>
+<div class="mouse-move mouse-inner"></div>
+<!-- Mouse Cursor Ends -->
 
 
-    <!-- jquery -->
-    <script src="{{ url_for('static', filename='assets/js/jquery-3.6.0.min.js') }}"></script>
-    <!-- jquery Migrate -->
-    <script src="{{ url_for('static', filename='assets/js/jquery-migrate.min.js') }}"></script>
-    <!-- bootstrap -->
-    <script src="{{ url_for('static', filename='assets/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- Wow Js -->
-    <script src="{{ url_for('static', filename='assets/js/wow.js') }}"></script>
-    <!-- Slick Js -->
-    <script src="{{ url_for('static', filename='assets/js/slick.js') }}"></script>
-    <!-- ImageLoaded Js -->
-    <script src="{{ url_for('static', filename='assets/js/imagesloaded.pkgd.min.js') }}"></script>
-    <!-- Isotope Js -->
-    <script src="{{ url_for('static', filename='assets/js/isotope.pkgd.min.js') }}"></script>
-    <!-- Magnific Popup Js -->
-    <script src="{{ url_for('static', filename='assets/js/jquery.magnific-popup.js') }}"></script>
-    <!-- Nice Select Js -->
-    <script src="{{ url_for('static', filename='assets/js/jquery.nice-select.js') }}"></script>
-    <!-- Flat Picker Js -->
-    <script src="{{ url_for('static', filename='assets/js/flatpicker.js') }}"></script>
-    <!-- Range Slider Js -->
-    <script src="{{ url_for('static', filename='assets/js/nouislider-8.5.1.min.js') }}"></script>
-    <!-- TellInput Js -->
-    <script src="{{ url_for('static', filename='assets/js/intlTelInput.js') }}"></script>
-    <!-- main js -->
-    <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+<!-- jquery -->
+<script src="{{ url_for('static', filename='assets/js/jquery-3.6.0.min.js') }}"></script>
+<!-- jquery Migrate -->
+<script src="{{ url_for('static', filename='assets/js/jquery-migrate.min.js') }}"></script>
+<!-- bootstrap -->
+<script src="{{ url_for('static', filename='assets/js/bootstrap.bundle.min.js') }}"></script>
+<!-- Wow Js -->
+<script src="{{ url_for('static', filename='assets/js/wow.js') }}"></script>
+<!-- Slick Js -->
+<script src="{{ url_for('static', filename='assets/js/slick.js') }}"></script>
+<!-- ImageLoaded Js -->
+<script src="{{ url_for('static', filename='assets/js/imagesloaded.pkgd.min.js') }}"></script>
+<!-- Isotope Js -->
+<script src="{{ url_for('static', filename='assets/js/isotope.pkgd.min.js') }}"></script>
+<!-- Magnific Popup Js -->
+<script src="{{ url_for('static', filename='assets/js/jquery.magnific-popup.js') }}"></script>
+<!-- Nice Select Js -->
+<script src="{{ url_for('static', filename='assets/js/jquery.nice-select.js') }}"></script>
+<!-- Flat Picker Js -->
+<script src="{{ url_for('static', filename='assets/js/flatpicker.js') }}"></script>
+<!-- Range Slider Js -->
+<script src="{{ url_for('static', filename='assets/js/nouislider-8.5.1.min.js') }}"></script>
+<!-- TellInput Js -->
+<script src="{{ url_for('static', filename='assets/js/intlTelInput.js') }}"></script>
+<!-- main js -->
+<script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
 </body>
 </html>

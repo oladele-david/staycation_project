@@ -1,3 +1,4 @@
+import uuid
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -8,13 +9,13 @@ class User(UserMixin, db.Model):
     """User model for storing user related details"""
 
     __tablename__ = 'users'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
     other_name = db.Column(db.String(50), nullable=True)
     email = db.Column(db.String(120), nullable=False, unique=True)
     phone = db.Column(db.String(20), nullable=True, unique=True)
-    password_hash = db.Column(db.String(128))
+    password_hash = db.Column(db.String(255))
     address_line1 = db.Column(db.String(255))
     address_line2 = db.Column(db.String(255))
     city_id = db.Column(db.Integer, db.ForeignKey('cities.id'), nullable=True)
@@ -24,6 +25,7 @@ class User(UserMixin, db.Model):
     country = db.relationship('Country', backref='user', lazy=True)
     state = db.relationship('State', backref='user', lazy=True)
     city = db.relationship('City', backref='user', lazy=True)
+    bookings = db.relationship('Booking', backref='user', lazy=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     is_admin = db.Column(db.Boolean, default=False)

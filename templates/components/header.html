@@ -27,7 +27,26 @@
             </div>
             <div class="navbar-right-content show-nav-content">
                 <div class="single-right-content">
-                    <div class="navbar-right-flex">
+                    {% if current_user.is_authenticated %}
+                        <div class="navbar-author">
+                            <div class="navbar-author-flex">
+                                <div class="navbar-author-thumb">
+                                    <img src="{{ url_for('static', filename='assets/img/single-page/author.jpg')}}" alt="img">
+                                </div>
+                                <div class="navbar-author-name">
+                                    <h6 class="navbar-author-name-title"> {{ current_user.first_name }} </h6>
+                                </div>
+                            </div>
+                            <div class="navbar-author-wrapper">
+                                <div class="navbar-author-wrapper-list">
+                                    <a href="signup.html" class="navbar-author-wrapper-list-item"> Dashboard </a>
+                                    <a href="login.html" class="navbar-author-wrapper-list-item"> Profile</a>
+                                    <a href="{{ url_for('auth.logout') }}" class="navbar-author-wrapper-list-item"> Sign Out </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="navbar-right-flex">
                         <div class="navbar-right-btn">
                             <a href="{{ url_for('auth.login') }}">Log In</a>
                         </div>
@@ -35,6 +54,8 @@
                             <a href="{{ url_for('auth.register') }}" class="cmn-btn btn-bg-1 radius-10">Sign Up</a>
                         </div>
                     </div>
+                    {% endif %}
+
                 </div>
             </div>
         </div>
