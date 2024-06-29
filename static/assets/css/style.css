@@ -8251,6 +8251,35 @@ span {
 }
 
 /* Search Suggestions */
+
+.hotel-suggestions-wrapper .hotel-click-icon {
+  cursor: pointer;
+  font-size: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 55px;
+  width: 55px;
+  color: #fff;
+  background-color: var(--main-color-one);
+  font-weight: 500;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  border-radius: 5px;
+}
+.hotel-suggestions-wrapper .hotel-click-icon:hover {
+  background-color: rgba(var(--main-color-one-rgb), 0.8);
+  color: #fff;
+}
+
+
+/* Search Suggestions */
 .search-suggestions-wrapper {
   position: relative;
   z-index: 98;

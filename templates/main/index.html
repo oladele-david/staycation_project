@@ -15,198 +15,108 @@
                             <h2 class="banner-single-content-title fw-700"> Enjoy holidays, vacations & family time with us. </h2>
                             <p class="banner-single-content-para mt-3"> Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim. </p>
                             <div class="banner-location banner-location-one bg-white radius-5 mt-5">
-                                <div class="banner-location-flex">
-                                    <div class="banner-location-single">
-                                        <div class="banner-location-single-flex">
-                                            <div class="banner-location-single-icon">
-                                                <i class="las la-map-marker-alt"></i>
-                                            </div>
-                                            <div class="banner-location-single-contents">
-                                                <span class="banner-location-single-contents-subtitle"> Location </span>
-                                                <div class="banner-location-single-contents-dropdown">
-                                                    <select class="js-select select-style-two" name="state">
-                                                        <option value="1">Allentown, New Mexico</option>
-                                                        <option value="2">Allentown, New NewYork</option>
-                                                        <option value="3">Allentown, New Barcelona</option>
-                                                        <option value="4">Allentown, Paris</option>
-                                                    </select>
+                                <form action="#">
+                                    <div class="banner-location-flex">
+                                        <div class="banner-location-single">
+                                            <div class="banner-location-single-flex">
+                                                <div class="banner-location-single-icon">
+                                                    <i class="las la-map-marker-alt"></i>
+                                                </div>
+                                                <div class="banner-location-single-contents">
+                                                    <span class="banner-location-single-contents-subtitle"> Location </span>
+                                                    <div class="banner-location-single-contents-dropdown">
+                                                        <select class="js-select select-style-two" name="state">
+                                                            {% for location in locations %}
+                                                                <option value="{{ location.id }}">{{ location.name }}, {{ location.state.name }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="banner-location-single">
-                                        <div class="banner-location-single-flex">
-                                            <div class="banner-location-single-icon">
-                                                <i class="las la-calendar"></i>
-                                            </div>
-                                            <div class="banner-location-single-contents">
-                                                <span class="banner-location-single-contents-subtitle"> Check In </span>
-                                                <div class="banner-location-single-contents-dropdown custom-select">
-                                                    <select class="js-select select-style-two" name="state">
-                                                        <option value="1">20 Jun 2022</option>
-                                                        <option value="2">21 Jun 2022</option>
-                                                        <option value="3">22 Jun 2022</option>
-                                                        <option value="4">23 Jun 2022</option>
-                                                    </select>
+                                        <div class="banner-location-single">
+                                            <div class="banner-location-single-flex">
+                                                <div class="banner-location-single-icon">
+                                                    <i class="las la-calendar"></i>
+                                                </div>
+                                                <div class="banner-location-single-contents">
+                                                    <span class="banner-location-single-contents-subtitle"> Check In </span>
+                                                    <div class="banner-location-single-contents-dropdown custom-select">
+                                                        <input name="check_in" type="date" class="form-control select-style-two" style="height: 55px; line-height: 55px; color: var(--paragraph-color);">
+    {#                                                    <select class="js-select select-style-two" name="state">#}
+    {#                                                        <option value="1">20 Jun 2022</option>#}
+    {#                                                        <option value="2">21 Jun 2022</option>#}
+    {#                                                        <option value="3">22 Jun 2022</option>#}
+    {#                                                        <option value="4">23 Jun 2022</option>#}
+    {#                                                    </select>#}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="banner-location-single">
-                                        <div class="banner-location-single-flex">
-                                            <div class="banner-location-single-icon">
-                                                <i class="las la-calendar"></i>
-                                            </div>
-                                            <div class="banner-location-single-contents">
-                                                <span class="banner-location-single-contents-subtitle"> Check Out </span>
-                                                <div class="banner-location-single-contents-dropdown custom-select">
-                                                    <select class="js-select select-style-two" name="state">
-                                                        <option value="1">20 Jul 2022</option>
-                                                        <option value="2">21 Jul 2022</option>
-                                                        <option value="3">22 Jul 2022</option>
-                                                        <option value="4">23 Jul 2022</option>
-                                                    </select>
+                                        <div class="banner-location-single">
+                                            <div class="banner-location-single-flex">
+                                                <div class="banner-location-single-icon">
+                                                    <i class="las la-calendar"></i>
+                                                </div>
+                                                <div class="banner-location-single-contents">
+                                                    <span class="banner-location-single-contents-subtitle"> Check Out </span>
+                                                    <div class="banner-location-single-contents-dropdown custom-select">
+                                                        <input name="check_out" type="date" class="form-control select-style-two" style="height: 55px; line-height: 55px; color: var(--paragraph-color);">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="banner-location-single">
-                                        <div class="banner-location-single-flex">
-                                            <div class="banner-location-single-icon">
-                                                <i class="las la-user-friends"></i>
-                                            </div>
-                                            <div class="banner-location-single-contents">
-                                                <span class="banner-location-single-contents-subtitle"> Person </span>
-                                                <div class="banner-location-single-contents-dropdown custom-select">
-                                                    <select class="js-select select-style-two" name="state">
-                                                        <option value="1">2 People</option>
-                                                        <option value="2">3 People</option>
-                                                        <option value="3">4 People</option>
-                                                        <option value="4">5 People</option>
-                                                    </select>
+                                        <div class="banner-location-single">
+                                            <div class="banner-location-single-flex">
+                                                <div class="banner-location-single-icon">
+                                                    <i class="las la-user-friends"></i>
+                                                </div>
+                                                <div class="banner-location-single-contents">
+                                                    <span class="banner-location-single-contents-subtitle"> Person </span>
+                                                    <div class="banner-location-single-contents-dropdown custom-select">
+                                                        <select class="js-select select-style-two" name="state">
+                                                            <option value="1">2 People</option>
+                                                            <option value="2">3 People</option>
+                                                            <option value="3">4 People</option>
+                                                            <option value="4">5 People</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="banner-location-single">
-                                        <div class="banner-location-single-flex">
-                                            <div class="banner-location-single-icon">
-                                                <i class="las la-user-friends"></i>
-                                            </div>
-                                            <div class="banner-location-single-contents">
-                                                <span class="banner-location-single-contents-subtitle"> Children </span>
-                                                <div class="banner-location-single-contents-dropdown custom-select">
-                                                    <select class="js-select select-style-two" name="state">
-                                                        <option value="1">2 Children</option>
-                                                        <option value="2">3 Children</option>
-                                                        <option value="3">4 Children</option>
-                                                        <option value="4">5 Children</option>
-                                                    </select>
+                                        <div class="banner-location-single">
+                                            <div class="banner-location-single-flex">
+                                                <div class="banner-location-single-icon">
+                                                    <i class="las la-user-friends"></i>
+                                                </div>
+                                                <div class="banner-location-single-contents">
+                                                    <span class="banner-location-single-contents-subtitle"> Children </span>
+                                                    <div class="banner-location-single-contents-dropdown custom-select">
+                                                        <select class="js-select select-style-two" name="state">
+                                                            <option value="1">2 Children</option>
+                                                            <option value="2">3 Children</option>
+                                                            <option value="3">4 Children</option>
+                                                            <option value="4">5 Children</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="banner-location-single-search">
-                                        <div class="search-suggestions-wrapper">
-                                            <div class="search-click-icon">
-                                                <i class="las la-search"></i>
-                                            </div>
-                                            <div class="search-show">
-                                                <div class="search-show-inner">
-                                                    <form action="#">
-                                                        <div class="search-show-form">
-                                                            <input autocomplete="off" class="form--control" id="search_form_input" type="text" placeholder="Search here....">
-                                                            <button type="submit"> <i class="las la-search"></i> </button>
-                                                            <span class="suggestions-icon-close"> <i class="las la-times"></i> </span>
-                                                        </div>
-                                                        <div class="search-product" id="search_suggestions_wrap">
-                                                            <div class="search-product-inner">
-                                                                <h6 class="search-product-title">Product Suggestions</h6>
-                                                                <ul class="search-product-list mt-4">
-                                                                    <li class="search-product-list-item">
-                                                                        <a href="javascript:void(0)" class="search-product-list-link">
-                                                                            <div class="search-product-list-image"><img src="assets/img/search_suggestion/s1.jpg" alt="img"></div>
-                                                                            <div class="search-product-list-info">
-                                                                                <div class="search-product-list-info-top">
-                                                                                    <h6 class="earch-product-list-info-title"> Apple Original Air pod Collection for most popular and best price item in market </h6>
-                                                                                </div>
-                                                                                <div class="search-product-list-info-price mt-2">
-                                                                                    <div class="search-product-list-info-price-through">
-                                                                                        <span class="flash-price"> $330.00 </span>
-                                                                                        <span class="old-price"> $300.00 </span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="search-product-list-item">
-                                                                        <a href="javascript:void(0)" class="search-product-list-link">
-                                                                            <div class="search-product-list-image"><img src="assets/img/search_suggestion/s2.jpg" alt="img"></div>
-                                                                            <div class="search-product-list-info">
-                                                                                <div class="search-product-list-info-top">
-                                                                                    <h6 class="earch-product-list-info-title"> Apple Original Airpod Collection </h6>
-                                                                                </div>
-                                                                                <div class="search-product-list-info-price mt-2">
-                                                                                    <span class="main-price fw-500 color-light">$269.00</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="search-product-list-item">
-                                                                        <a href="javascript:void(0)" class="search-product-list-link">
-                                                                            <div class="search-product-list-image"><img src="assets/img/search_suggestion/s3.jpg" alt="img"></div>
-                                                                            <div class="search-product-list-info">
-                                                                                <div class="search-product-list-info-top">
-                                                                                    <h6 class="earch-product-list-info-title"> Apple Original Airpod Collection </h6>
-                                                                                </div>
-                                                                                <div class="search-product-list-info-price mt-2">
-                                                                                    <span class="main-price fw-500 color-light">$499.00</span>
-                                                                                    <span class="stock-out"> Stock Out </span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="search-product-list-item">
-                                                                        <a href="javascript:void(0)" class="search-product-list-link">
-                                                                            <div class="search-product-list-image"><img src="assets/img/search_suggestion/s4.jpg" alt="img"></div>
-                                                                            <div class="search-product-list-info">
-                                                                                <div class="search-product-list-info-top">
-                                                                                    <h6 class="earch-product-list-info-title"> Apple Original Airpod Collection </h6>
-                                                                                </div>
-                                                                                <div class="search-product-list-info-price mt-2">
-                                                                                    <span class="main-price fw-500 color-light">$499.00</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="search-product-list-item">
-                                                                        <a href="javascript:void(0)" class="search-product-list-link">
-                                                                            <div class="search-product-list-image"><img src="assets/img/search_suggestion/s5.jpg" alt="img"></div>
-                                                                            <div class="search-product-list-info">
-                                                                                <div class="search-product-list-info-top">
-                                                                                    <h6 class="earch-product-list-info-title"> Apple Original Airpod Collection </h6>
-                                                                                </div>
-                                                                                <div class="search-product-list-info-price mt-2">
-                                                                                    <span class="main-price fw-500 color-light">$499.00</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
+
+                                        <div class="banner-location-single-search">
+                                            <div class="hotel-suggestions-wrapper">
+                                                <button type="submit" class="hotel-click-icon">
+                                                    <i class="las la-search"></i>
+                                                </button>
                                             </div>
                                         </div>
-                                        <div class="search-suggestion-overlay"></div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 bg-image banner-right-bg radius-20" style="background-image: url('{{ url_for('static', filename='assets/img/banner/banner.jpg') }}');"></div>
+                <div class="col-lg-6 bg-image banner-right-bg radius-20" style="background-image: url('{{ url_for('static', filename='assets/img/banner/banner-hotel.jpg') }}');"></div>
             </div>
         </div>
     </div>
@@ -280,47 +190,72 @@
                 <div class="col-12">
                     <div class="global-slick-init attraction-slider nav-style-one slider-inner-margin" data-appendArrows=".append-attraction" data-infinite="true" data-arrows="true" data-dots="false" data-slidesToShow="4" data-swipeToSlide="true" data-autoplay="true" data-autoplaySpeed="2500"
                         data-prevArrow='<div class="prev-icon"><i class="las la-angle-left"></i></div>' data-nextArrow='<div class="next-icon"><i class="las la-angle-right"></i></div>' data-responsive='[{"breakpoint": 1400,"settings": {"slidesToShow": 4}},{"breakpoint": 1200,"settings": {"slidesToShow": 3}},{"breakpoint": 992,"settings": {"slidesToShow": 2}},{"breakpoint": 480, "settings": {"slidesToShow": 1} }]'>
+
                         <div class="attraction-item">
                             <div class="single-attraction radius-20">
                                 <div class="single-attraction-thumb">
-                                    <a href="hotel_details.html"><img src="{{ url_for('static', filename='assets/img/attraction/a1.jpg') }}" alt="img"></a>
+                                    <a href="javascript:void(0);"><img src="{{ url_for('static', filename='assets/img/attraction/a1.jpg') }}" alt="img"></a>
                                 </div>
                                 <div class="single-attraction-contents">
-                                    <h4 class="single-attraction-contents-title"><a href="hotel_details.html">Eiffel Tower</a></h4>
-                                    <p class="single-attraction-contents-para">We have over 28K reviews to assure you top notch service.</p>
+                                    <h4 class="single-attraction-contents-title"><a href="javascript:void(0);">Lekki Conservation Centre</a></h4>
+                                    <p class="single-attraction-contents-para">
+                                        Jungle walk through a lush conservation area with the longest canopy walk in Africa,
+                                        providing treetop views and encounters with diverse wildlife such as monkeys and crocodiles
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="attraction-item">
+                            <div class="single-attraction radius-20">
+                                <div class="single-attraction-thumb">
+                                    <a href="javascript:void(0);"><img src="{{ url_for('static', filename='assets/img/attraction/a2.jpg') }}" alt="img"></a>
+                                </div>
+                                <div class="single-attraction-contents">
+                                    <h4 class="single-attraction-contents-title"><a href="javascript:void(0);">Nike Centre For Art And Culture</a></h4>
+                                    <p class="single-attraction-contents-para">
+                                        Art gallery showcasing a rich array of Afro-centric art, set in a serene environment with cultural and educational pieces.
+                                        Features art mediums for viewing and purchase.
+                                    </p>
                                 </div>
                             </div>
                         </div>
                         <div class="attraction-item">
                             <div class="single-attraction radius-20">
                                 <div class="single-attraction-thumb">
-                                    <a href="hotel_details.html"><img src="{{ url_for('static', filename='assets/img/attraction/a2.jpg') }}" alt="img"></a>
+                                    <a href="javascript:void(0);"><img src="{{ url_for('static', filename='assets/img/attraction/a3.jpg') }}" alt="img"></a>
                                 </div>
                                 <div class="single-attraction-contents">
-                                    <h4 class="single-attraction-contents-title"><a href="hotel_details.html">Disneyland</a></h4>
-                                    <p class="single-attraction-contents-para">We have over 28K reviews to assure you top notch service.</p>
+                                    <h4 class="single-attraction-contents-title"><a href="javascript:void(0);">Lekki Market</a></h4>
+                                    <p class="single-attraction-contents-para">The market has almost everything. The market is neat,farm produce are fresh and budget friendly. One of the best.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="attraction-item">
                             <div class="single-attraction radius-20">
                                 <div class="single-attraction-thumb">
-                                    <a href="hotel_details.html"><img src="{{ url_for('static', filename='assets/img/attraction/a3.jpg') }}" alt="img"></a>
+                                    <a href="javascript:void(0);"><img src="{{ url_for('static', filename='assets/img/attraction/a4.jpg') }}" alt="img"></a>
                                 </div>
                                 <div class="single-attraction-contents">
-                                    <h4 class="single-attraction-contents-title"><a href="hotel_details.html">Palace de justice</a></h4>
-                                    <p class="single-attraction-contents-para">We have over 28K reviews to assure you top notch service.</p>
+                                    <h4 class="single-attraction-contents-title"><a href="javascript:void(0);">The Cathedral Church of Christ</a></h4>
+                                    <p class="single-attraction-contents-para">
+                                        Located in the centre of Lagos Island its home to prominent lagos politicians who attend service there. A must-visit
+                                    </p>
                                 </div>
                             </div>
                         </div>
+
                         <div class="attraction-item">
                             <div class="single-attraction radius-20">
                                 <div class="single-attraction-thumb">
-                                    <a href="hotel_details.html"><img src="{{ url_for('static', filename='assets/img/attraction/a4.jpg') }}" alt="img"></a>
+                                    <a href="javascript:void(0);"><img src="{{ url_for('static', filename='assets/img/attraction/a5.jpg') }}" alt="img"></a>
                                 </div>
                                 <div class="single-attraction-contents">
-                                    <h4 class="single-attraction-contents-title"><a href="hotel_details.html">Arc de Trimorph</a></h4>
-                                    <p class="single-attraction-contents-para">We have over 28K reviews to assure you top notch service.</p>
+                                    <h4 class="single-attraction-contents-title"><a href="javascript:void(0);">Tarkwa Bay Beach</a></h4>
+                                    <p class="single-attraction-contents-para">
+                                        Unwind at this remote and sheltered beach that's close to Lagos harbor.
+                                        Only accessible by boat or water taxi from Lagos Island, this secluded beach is quiet and calm, making it popular for swimming…
+                                    </p>
                                 </div>
                             </div>
                         </div>

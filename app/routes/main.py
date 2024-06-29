@@ -1,12 +1,16 @@
 from flask import Blueprint, render_template
 from flask_login import current_user
+from app.models import User
+from app.models import City
 
 main_bp = Blueprint('main_route', __name__)
 
 
 @main_bp.route('/')
 def index():
-    return render_template("main/index.html")
+    locations = City.query.all()
+
+    return render_template("main/index.html", locations=locations)
     #return "Hello, this is the main route."
 
 
