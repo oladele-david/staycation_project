@@ -5,7 +5,7 @@ from app.extensions import db, login_manager
 from app.models import User
 from sqlalchemy.exc import SQLAlchemyError
 
-auth_bp = Blueprint('auth', __name__)
+auth_bp = Blueprint('auth_route', __name__)
 
 
 @login_manager.user_loader
@@ -28,15 +28,15 @@ def login():
             else:
                 login_user(user)
                 flash('You have been logged in.', 'success')
-                return redirect(url_for('main.index'))
+                return redirect(url_for('main_route.index'))
 
         except SQLAlchemyError as e:
             flash('An error occurred while accessing the database. Please try again later.', 'danger')
-            return redirect(url_for('auth.login'))
+            return redirect(url_for('auth_route.login'))
 
         except Exception as e:
             flash('An unexpected error occurred. Please try again later.', 'danger')
-            return redirect(url_for('auth.login'))
+            return redirect(url_for('auth_route.login'))
 
     return render_template('auth/login.html')
 
@@ -90,4 +90,4 @@ def register():
 def logout():
     logout_user()
     flash('You have been logged out.', 'success')
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main_route.index'))

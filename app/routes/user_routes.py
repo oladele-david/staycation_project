@@ -4,7 +4,7 @@ from app.models import User
 from app.extensions import db
 from functools import wraps
 
-user_bp = Blueprint('user', __name__)
+user_bp = Blueprint('user_route', __name__)
 
 
 @user_bp.route('/')

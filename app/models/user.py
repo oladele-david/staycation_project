@@ -6,7 +6,7 @@ from app.extensions import db
 
 
 class User(UserMixin, db.Model):
-    """User model for storing user related details"""
+    """User model for storing user related details."""
 
     __tablename__ = 'users'
     id = db.Column(db.String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
@@ -22,16 +22,16 @@ class User(UserMixin, db.Model):
     state_id = db.Column(db.Integer, db.ForeignKey('states.id'), nullable=True)
     country_id = db.Column(db.Integer, db.ForeignKey('countries.id'), nullable=True)
     zip_code = db.Column(db.String(20))
-    country = db.relationship('Country', backref='user', lazy=True)
-    state = db.relationship('State', backref='user', lazy=True)
-    city = db.relationship('City', backref='user', lazy=True)
-    bookings = db.relationship('Booking', backref='user', lazy=True)
+    country = db.relationship('Country', back_populates='users')
+    state = db.relationship('State', back_populates='users')
+    city = db.relationship('City', back_populates='users')
+    bookings = db.relationship('Booking', back_populates='user', lazy=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     is_admin = db.Column(db.Boolean, default=False)
 
     def __repr__(self):
-        return f'<User {self.first_name}>, {self.email}, {self.created_at}'
+        return f'<User {self.first_name}, {self.email}, {self.created_at}>'
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)

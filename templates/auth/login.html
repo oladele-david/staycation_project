@@ -29,7 +29,7 @@
 
                         <p class="sigle-para mt-2"> Login to Continue </p>
                         <form class="login-wrapper-contents-form custom-form" method="POST"
-                              action="{{ url_for('auth.login') }}">
+                              action="{{ url_for('auth_route.login') }}">
                             <div class="single-input mt-4">
                                 <label class="label-title mb-3"> Email Address </label>
                                 <input class="form--control" type="text" name="email"
@@ -45,8 +45,13 @@
                                 </div>
                             </div>
                             <button class="submit-btn w-100 mt-4" type="submit"> Sign In Now</button>
-                            <span class="account color-light mt-3"> Don't have an account? <a class="color-one"
-                                                                                              href="{{ url_for('auth.register') }}"> SignUp Now </a> </span>
+                            <span class="account color-light mt-3"> Don't have an account?
+                                <a class="color-one" href="{{ url_for('auth_route.register') }}"> SignUp Now </a>
+                                <br>
+                                <br>
+                                <a class="color-one btn btn-outline-primary" href="{{ url_for('main_route.index') }}"> Home?</a>
+                            </span>
+
                         </form>
                         <div class="single-checkbox mt-3">
                             <div class="checkbox-inline">

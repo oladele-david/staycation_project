@@ -111,7 +111,7 @@ your_flask_app/
 2. **Create and Activate a Virtual Environment** (optional but recommended):
    ```bash
    python3 -m venv .venv
-   source .venv/bin/activate  # On Windows: venv\Scripts\activate
+   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
    ```
 
 3. **Install Dependencies**:

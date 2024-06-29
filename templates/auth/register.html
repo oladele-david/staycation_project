@@ -24,7 +24,7 @@
                             {% endif %}
                         {% endwith %}
 
-                        <form class="login-wrapper-form custom-form padding-top-20"  method="POST" action="{{ url_for('auth.register') }}">
+                        <form class="login-wrapper-form custom-form padding-top-20"  method="POST" action="{{ url_for('auth_route.register') }}">
                             <div class="input-flex-item">
                                 <div class="single-input mt-4">
                                     <label class="label-title mb-3"> First Name </label>
@@ -68,7 +68,12 @@
                                     and <a class="color-one" href="javascript:void(0)"> privacy policy </a> </label>
                             </div>
                             <button class="submit-btn w-100 mt-4" type="submit"> Sign Up Now </button>
-                            <span class="account color-light mt-3"> Already have an account? <a class="color-one" href="{{ url_for('auth.login') }}"> Login </a> </span>
+                            <span class="account color-light mt-3"> Already have an account?
+                                <a class="color-one" href="{{ url_for('auth_route.login') }}"> Login </a>
+                                <br>
+                                <br>
+                                <a class="color-one btn btn-outline-primary" href="{{ url_for('main_route.index') }}"> Home?</a>
+                            </span>
                         </form>
                     </div>
                 </div>

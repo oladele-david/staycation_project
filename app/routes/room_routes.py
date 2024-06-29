@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for, flash
 
-room_bp = Blueprint('room', __name__)
+room_bp = Blueprint('room_route', __name__)
 
 
 @room_bp.route('/')

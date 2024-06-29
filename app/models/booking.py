@@ -3,7 +3,7 @@ from app.extensions import db
 
 
 class Booking(db.Model):
-    """Booking model for storing bookings related details """
+    """Booking model for storing bookings related details."""
 
     __tablename__ = 'bookings'
     id = db.Column(db.Integer, primary_key=True)
@@ -16,3 +16,6 @@ class Booking(db.Model):
     booking_status = db.Column(db.String(64), nullable=False)
     special_requirements = db.Column(db.String(256))
     hotel_id = db.Column(db.Integer, db.ForeignKey('hotels.id'), nullable=False)
+    user = db.relationship('User', back_populates='bookings')
+    room = db.relationship('Room', back_populates='bookings')
+    hotel = db.relationship('Hotel', back_populates='bookings')

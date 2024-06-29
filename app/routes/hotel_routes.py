@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for, flash
 from app.models import Hotel
 from app.extensions import db
 
-hotel_bp = Blueprint('hotel', __name__)
+hotel_bp = Blueprint('hotel_route', __name__)
 
 
 @hotel_bp.route('/')

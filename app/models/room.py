@@ -2,7 +2,7 @@ from app.extensions import db
 
 
 class Room(db.Model):
-    """Room model for storing room related details"""
+    """Room model for storing room related details."""
 
     __tablename__ = 'rooms'
     id = db.Column(db.Integer, primary_key=True)
@@ -17,4 +17,5 @@ class Room(db.Model):
     price_per_night = db.Column(db.Float, nullable=False)
     status = db.Column(db.String(64), nullable=False)  # Specify length
     hotel_id = db.Column(db.Integer, db.ForeignKey('hotels.id'), nullable=False)
-    bookings = db.relationship('Booking', backref='room', lazy=True)
+    bookings = db.relationship('Booking', back_populates='room', lazy=True)
+    hotel = db.relationship('Hotel', back_populates='rooms')

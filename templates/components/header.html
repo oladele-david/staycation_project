@@ -4,7 +4,7 @@
     <nav class="navbar navbar-area navbar-border navbar-padding navbar-expand-lg">
         <div class="container custom-container-one nav-container">
             <div class="logo-wrapper">
-                <a href="{{url_for('main.index')}}" class="logo">
+                <a href="{{url_for('main_route.index')}}" class="logo">
                     <img src="{{ url_for('static', filename='assets/img/logo.png') }}" alt="">
                 </a>
             </div>
@@ -19,10 +19,10 @@
             <div class="collapse navbar-collapse" id="hotel_booking_menu">
                 <ul class="navbar-nav">
 
-                    <li><a href="{{url_for('main.index')}}">WebTop</a></li>
-                    <li><a href="{{url_for('main.about')}}">About</a></li>
-                    <li><a href="{{url_for('room.get_rooms')}}">Rooms</a></li>
-                    <li><a href="{{ url_for('main.contact') }}">Contact Us</a></li>
+                    <li><a href="{{url_for('main_route.index')}}">WebTop</a></li>
+                    <li><a href="{{url_for('main_route.about')}}">About</a></li>
+                    <li><a href="{{url_for('room_route.get_rooms')}}">Rooms</a></li>
+                    <li><a href="{{ url_for('main_route.contact') }}">Contact Us</a></li>
                 </ul>
             </div>
             <div class="navbar-right-content show-nav-content">
@@ -41,17 +41,17 @@
                                 <div class="navbar-author-wrapper-list">
                                     <a href="signup.html" class="navbar-author-wrapper-list-item"> Dashboard </a>
                                     <a href="login.html" class="navbar-author-wrapper-list-item"> Profile</a>
-                                    <a href="{{ url_for('auth.logout') }}" class="navbar-author-wrapper-list-item"> Sign Out </a>
+                                    <a href="{{ url_for('auth_route.logout') }}" class="navbar-author-wrapper-list-item"> Sign Out </a>
                                 </div>
                             </div>
                         </div>
                     {% else %}
                         <div class="navbar-right-flex">
                         <div class="navbar-right-btn">
-                            <a href="{{ url_for('auth.login') }}">Log In</a>
+                            <a href="{{ url_for('auth_route.login') }}">Log In</a>
                         </div>
                         <div class="btn-wrapper">
-                            <a href="{{ url_for('auth.register') }}" class="cmn-btn btn-bg-1 radius-10">Sign Up</a>
+                            <a href="{{ url_for('auth_route.register') }}" class="cmn-btn btn-bg-1 radius-10">Sign Up</a>
                         </div>
                     </div>
                     {% endif %}
