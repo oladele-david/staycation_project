@@ -18,3 +18,6 @@ __pycache__/
 
 # Ignore qodana server-side analysis
 .yaml
+
+# Ignore qodana server-side analysis
+qodana.yaml
