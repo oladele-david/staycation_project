@@ -26,3 +26,6 @@ class Hotel(db.Model):
     country = db.relationship('Country', back_populates='hotels')
     state = db.relationship('State', back_populates='hotels')
     city = db.relationship('City', back_populates='hotels')
+
+    def __repr__(self):
+        return f"<Hotel '{self.hotel_name}'>"
