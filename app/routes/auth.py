@@ -24,7 +24,7 @@ def login():
 
             if user is None or not user.check_password(password):
                 flash('Invalid email or password', 'danger')
-                return redirect(url_for('auth.login'))
+                return redirect(url_for('auth_route.login'))
             else:
                 login_user(user)
                 flash('You have been logged in.', 'success')
@@ -70,7 +70,7 @@ def register():
             db.session.commit()
 
             flash('Registration successful. Please log in.', 'success')
-            return redirect(url_for('auth.login'))
+            return redirect(url_for('auth_route.login'))
 
         except SQLAlchemyError as e:
             db.session.rollback()  # Rollback the session in case of error

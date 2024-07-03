@@ -5,9 +5,10 @@ from flask_admin.contrib.sqla import ModelView
 pymysql.install_as_MySQLdb()
 
 from .extensions import db, migrate, login_manager
-from .routes import main_bp, user_bp, hotel_bp, room_bp
+from .routes import main_bp, user_bp, hotel_bp, room_bp, booking_bp
 from app.routes.auth import auth_bp
 from .admin.initialize_admin import initialize_admin
+from .errors import errors_bp
 
 
 def create_app():
@@ -29,5 +30,7 @@ def create_app():
     app.register_blueprint(hotel_bp, url_prefix='/hotels')
     app.register_blueprint(room_bp, url_prefix='/rooms')
     app.register_blueprint(auth_bp, url_prefix='/auth')
+    app.register_blueprint(booking_bp, url_prefix='/bookings')
+    app.register_blueprint(errors_bp)
 
     return app

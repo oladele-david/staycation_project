@@ -1,0 +1,254 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+
+{% block title %}Room Details | Staycation{% endblock %}
+
+{% block content %}
+
+    <!-- Breadcrumb area Starts -->
+    <div class="breadcrumb-area breadcrumb-padding">
+        <div class="container custom-container-one">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-contents">
+                        <h4 class="breadcrumb-contents-title"> Room Details </h4>
+                        <ul class="breadcrumb-contents-list list-style-none">
+                            <li class="breadcrumb-contents-list-item"> <a href="{{ url_for('main_route.index') }}" class="breadcrumb-contents-list-item-link"> Home </a> </li>
+                            <li class="breadcrumb-contents-list-item"> <a href="{{ url_for('room_route.get_rooms') }}" class="breadcrumb-contents-list-item-link"> Hotels </a> </li>
+                            <li class="breadcrumb-contents-list-item"> Hotel Details </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb area end -->
+    <!-- Hotel Details area Starts -->
+    <section class="hotel-details-area section-bg-2 pat-100 pab-100">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-xl-8 col-lg-7">
+                    <div class="details-left-wrapper">
+                        <div class="details-contents bg-white radius-10">
+                            <div class="details-contents-header">
+                                <div class="details-contents-thumb details-contents-main-thumb bg-image" style="background-image: url({{ url_for('static', filename='assets/img/single-page/details_main.jpg') }});">
+                                </div>
+                                <div class="details-contents-header-flex">
+                                    <div class="details-contents-header-thumb">
+                                        <img src="{{ url_for('static', filename='assets/img/single-page/details_1.jpg') }}" alt="img">
+                                    </div>
+                                    <div class="details-contents-header-thumb">
+                                        <img src="{{ url_for('static', filename='assets/img/single-page/details_2.jpg') }}" alt="img">
+                                        <!-- a href="javascript:void(0)" class="more-photos"> <i class="las la-plus"></i> More Photos </a -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hotel-view-contents">
+                                <div class="hotel-view-contents-header">
+                                    <span class="hotel-view-contents-review"> <i class="las la-star"></i> 4.5 <span class="hotel-view-contents-review-count"> (380) </span> </span>
+                                    <h3 class="hotel-view-contents-title"> {{ room_data.room_type }} </h3>
+                                    <div class="hotel-view-contents-location mt-2">
+                                        <span class="hotel-view-contents-location-icon"> <i class="las la-map-marker-alt"></i> </span>
+                                        <span class="hotel-view-contents-location-para"> {{ room_data.hotel.address}}, {{ room_data.hotel.country.name}}. </span>
+                                    </div>
+                                </div>
+                                <div class="hotel-view-contents-middle">
+                                    <div class="hotel-view-contents-flex">
+                                        <div class="hotel-view-contents-icon d-flex gap-1">
+                                            <span> <i class="las la-parking"></i> </span>
+                                            <p class="hotel-view-contents-icon-title flex-fill"> Parking </p>
+                                        </div>
+                                        <div class="hotel-view-contents-icon d-flex gap-1">
+                                            <span> <i class="las la-wifi"></i> </span>
+                                            <p class="hotel-view-contents-icon-title flex-fill"> Wifi </p>
+                                        </div>
+                                        <div class="hotel-view-contents-icon d-flex gap-1">
+                                            <span> <i class="las la-coffee"></i> </span>
+                                            <p class="hotel-view-contents-icon-title flex-fill"> Breakfast </p>
+                                        </div>
+                                        <div class="hotel-view-contents-icon d-flex gap-1">
+                                            <span> <i class="las la-quidditch"></i> </span>
+                                            <p class="hotel-view-contents-icon-title flex-fill"> Room Service </p>
+                                        </div>
+                                        <div class="hotel-view-contents-icon d-flex gap-1">
+                                            <span> <i class="las la-swimming-pool"></i> </span>
+                                            <p class="hotel-view-contents-icon-title flex-fill"> Pool </p>
+                                        </div>
+                                        <div class="hotel-view-contents-icon d-flex gap-1">
+                                            <span> <i class="las la-receipt"></i> </span>
+                                            <p class="hotel-view-contents-icon-title flex-fill"> Reception </p>
+                                        </div>
+                                        <div class="hotel-view-contents-icon d-flex gap-1">
+                                            <span> <i class="las la-dumbbell"></i> </span>
+                                            <p class="hotel-view-contents-icon-title flex-fill"> Gym </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="hotel-view-contents-bottom">
+                                    <div class="hotel-view-contents-bottom-flex">
+                                        <div class="hotel-view-contents-bottom-contents">
+                                            <h4 class="hotel-view-contents-bottom-title"> ₦{{ room_data.price_per_night }} <sub>/Night</sub> </h4>
+                                            <p class="hotel-view-contents-bottom-para">  ({{ room_data.max_adults }} Adults, {{ room_data.max_children }} Children, {{ room_data.number_of_beds }} Bed(s)) </p>
+                                        </div>
+                                        <div class="btn-wrapper">
+                                            <a href="javascript:void(0)" class="cmn-btn btn-bg-1 btn-small"> {{ room_data.status }} </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="details-contents-tab">
+                                <ul class="tabs details-tab details-tab-border">
+                                    <li class="active" data-tab="about"> About </li>
+                                    <li data-tab="reviews"> Reviews </li>
+                                </ul>
+                                <div id="about" class="tab-content-item active">
+                                    <div class="about-tab-contents">
+                                        <p class="about-tab-contents-para"> {{ room_data.description }} </p>
+
+                                    </div>
+                                </div>
+                                <div id="reviews" class="tab-content-item">
+                                    <div class="review-tab-contents">
+                                        <div class="review-tab-contents-single">
+                                            <div class="rating-wrap">
+                                                <div class="ratings">
+                                                    <span class="hide-rating"></span>
+                                                    <span class="show-rating"></span>
+                                                </div>
+                                                <p> <span class="total-ratings">(167)</span></p>
+                                            </div>
+                                            <p class="about-review-para mt-3"> The hotel was fantastic! The room was clean and well-maintained, and the staff were very friendly and helpful. Highly recommend staying here! </p>
+                                            <div class="review-tab-contents-author mt-4">
+                                                <h4 class="review-tab-contents-author-name"> Sandra M. Hurt </h4>
+                                                <p class="review-tab-contents-author-para mt-2"> TrustPilot </p>
+                                            </div>
+                                        </div>
+                                        <div class="review-tab-contents-single">
+                                            <div class="rating-wrap">
+                                                <div class="ratings">
+                                                    <span class="hide-rating"></span>
+                                                    <span class="show-rating"></span>
+                                                </div>
+                                                <p> <span class="total-ratings">(236)</span></p>
+                                            </div>
+                                            <p class="about-review-para mt-3"> Excellent service and amenities. The breakfast was superb with a variety of choices. I will definitely return on my next visit to the city. </p>
+                                            <div class="review-tab-contents-author mt-4">
+                                                <h4 class="review-tab-contents-author-name"> Robert Fox </h4>
+                                                <p class="review-tab-contents-author-para mt-2"> Designer </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-5">
+                    <div class="sticky-top">
+                        <div class="hotel-details-widget hotel-details-widget-padding widget bg-white radius-10">
+                            <div class="details-sidebar">
+                                <form action="{{ url_for('booking_route.checkout') }}">
+                                    <input name="room_id" type="hidden" value="{{ room_data.id }}">
+                                    <div class="details-sidebar-dropdown custom-form">
+
+                                        <div class="single-input">
+                                            <label class="details-sidebar-dropdown-title"> Check In </label>
+                                            <input class="form--control checkin-picker" name="check_in_date" type="text" placeholder="Check in" required>
+                                        </div>
+                                        <div class="single-input mt-3">
+                                            <label class="details-sidebar-dropdown-title"> Check Out </label>
+                                            <input class="form--control checkout-picker" name="check_out_date" type="text" placeholder="Check out" required>
+                                        </div>
+                                    </div>
+                                    <div class="details-sidebar-quantity pt-4">
+                                        <div class="details-sidebar-quantity-flex">
+                                            <div class="details-sidebar-quantity-item">
+                                                <h6 class="details-sidebar-quantity-title"> Guest </h6>
+                                                <div class="details-sidebar-quantity-field">
+                                                    <span class="minus"><i class="las la-minus"></i></span>
+                                                    <input class="quantity-input" type="number" max="{{ room_data.max_adults }}" value="1" name="no_of_adults">
+                                                    <span class="plus"><i class="las la-plus"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="details-sidebar-quantity-item">
+                                                <h6 class="details-sidebar-quantity-title"> Children </h6>
+                                                <div class="details-sidebar-quantity-field">
+                                                    <span class="minus"><i class="las la-minus"></i></span>
+                                                    <input class="quantity-input" type="number" max="{{ room_data.max_children }}" value="1" name="no_of_children">
+                                                    <span class="plus"><i class="las la-plus"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="details-sidebar-quantity-item">
+                                                <h6 class="details-sidebar-quantity-title"> Room </h6>
+                                                <div class="details-sidebar-quantity-field">
+                                                    <span class="minus"><i class="las la-minus"></i></span>
+                                                    <input class="quantity-input" type="number" max="{{ room_data.number_of_rooms_available }}" value="1" name="no_of_rooms">
+                                                    <span class="plus"><i class="las la-plus"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btn-wrapper mt-4">
+                                    <button type="submit" class="cmn-btn btn-bg-1 btn-small"> Book Room </button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Ads Section -->
+                        <div class="hotel-details-widget hotel-details-widget-padding widget bg-white radius-10">
+                            <div class="details-sidebar">
+                                <div class="details-sidebar-offer center-text radius-10">
+                                    <div class="details-sidebar-offer-shapes">
+                                        <img src="{{ url_for('static', filename='assets/img/single-page/offer_shapes.png') }}" alt="shapes">
+                                    </div>
+                                    <div class="details-sidebar-offer-thumb">
+                                        <img src="{{ url_for('static', filename='assets/img/single-page/offer.png') }}" alt="">
+                                    </div>
+                                    <div class="btn-wrapper mt-5">
+                                        <a href="javascript:void(0)" class="cmn-btn btn-bg-white"> Book Now </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hotel Details area end -->
+
+
+{% endblock %}
+
+{% block custom_script %}
+	<script>
+     /*
+        ========================================
+            Flat Picker js
+        ========================================
+        */
+        $(".checkin-picker").flatpickr({
+            mode: "single",
+            enableTime: true,
+            dateFormat: "d-m-Y",
+            altInput: true,
+            altFormat: "F j, Y",
+            time_12hr: true,
+            minDate: "today",
+            maxDate: new Date().fp_incr(90),
+        });
+
+        $(".checkout-picker").flatpickr({
+            mode: "single",
+            enableTime: true,
+            dateFormat: "d-m-Y",
+            altInput: true,
+            altFormat: "F j, Y",
+            time_12hr: true,
+            minDate: "today",
+            maxDate: new Date().fp_incr(90),
+        });
+    </script>
+{% endblock %}

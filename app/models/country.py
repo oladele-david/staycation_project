@@ -14,6 +14,7 @@ class Country(db.Model):
     states = db.relationship('State', back_populates='country', lazy=True)
     users = db.relationship('User', back_populates='country', lazy=True)
     hotels = db.relationship('Hotel', back_populates='country', lazy=True)
+    bookings = db.relationship('Booking', back_populates='country', lazy=True)
 
     def __repr__(self):
         return f"<Country '{self.name}'>"

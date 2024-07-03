@@ -14,6 +14,7 @@ class City(db.Model):
     state = db.relationship('State', back_populates='cities')
     users = db.relationship('User', back_populates='city')
     hotels = db.relationship('Hotel', back_populates='city')
+    bookings = db.relationship('Booking', back_populates='city', lazy=True)
 
     def __repr__(self):
         return f"<City '{self.name}'>"
