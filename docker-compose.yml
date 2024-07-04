@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  staycation-web:
+    build: .
+    container_name: staycation
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_URL=mysql+pymysql://staycation:Clever-Forest-Pathway-92-Jump-Kite@51.8.81.142:3306/staycation
+    volumes:
+      - .:/app
+    restart: always
+    networks:
+      - my-main-net
+
+networks:
+  my-main-net:
+    external: true
