@@ -8,8 +8,7 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Install any dependencies
-RUN pip install --no-cache-dir -r requirements.txt && \
-    pip install gunicorn
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application code
 COPY . .
@@ -17,5 +16,8 @@ COPY . .
 # Expose port 5000
 EXPOSE 5000
 
-# Run the application with Gunicorn, specifying the correct module and app variable
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "run:app"]
+# Define the environment variable for Flask
+ENV FLASK_APP run.py
+
+# Run the application using Flask's built-in server
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
