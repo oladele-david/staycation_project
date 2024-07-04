@@ -8,7 +8,7 @@ services:
       - "5000:5000"
     environment:
       - FLASK_ENV=production
-      - DATABASE_URL=your_external_database_url_here
+      - DATABASE_URL='mysql+pymysql://staycation:Clever-Forest-Pathway-92-Jump-Kite@51.8.81.142:3306/staycation'
     volumes:
       - .:/app
     restart: always
