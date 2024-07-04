@@ -3,7 +3,7 @@ version: '3.8'
 services:
   staycation-web:
     build: .
-    container_name: staycation-web
+    container_name: staycation-webserver
     ports:
       - "5000:5000"
     environment:
