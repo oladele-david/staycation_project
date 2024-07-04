@@ -58,11 +58,11 @@ def register():
         try:
             if User.query.filter_by(phone=phone).first():
                 flash('Phone already exists', 'danger')
-                return redirect(url_for('auth.register'))
+                return redirect(url_for('auth_route.register'))
 
             if User.query.filter_by(email=email).first():
                 flash('Email already exists', 'danger')
-                return redirect(url_for('auth.register'))
+                return redirect(url_for('auth_route.register'))
 
             user = User(first_name=first_name, last_name=last_name, email=email, phone=phone)
             user.set_password(password)
