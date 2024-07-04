@@ -5,12 +5,12 @@ services:
     build: .
     container_name: staycation-web
     ports:
-      - "5000:5000"   # Maps port 5000 on the host to port 5000 in the container
+      - "5000:5000"
     environment:
       - FLASK_ENV=production
-      - DATABASE_URL=your_external_database_url_here  # Set the database URL environment variable
+      - DATABASE_URL=your_external_database_url_here
     volumes:
-      - .:/app    # Mounts the current directory to the /app directory in the container
+      - .:/app
     restart: always
     networks:
       - my-main-net
