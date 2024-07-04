@@ -17,5 +17,5 @@ COPY . .
 # Expose port 5000
 EXPOSE 5000
 
-# Run the application with Gunicorn, specifying the module and the app variable
+# Run the application with Gunicorn, specifying the correct module and app variable
 CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "run:app"]
