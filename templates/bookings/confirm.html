@@ -30,10 +30,10 @@
                     <i class="las la-check"></i>
                 </div>
                 <h4 class="confirmation-contents-title"> Your reservation is confirmed </h4>
-                <p class="confirmation-contents-para"> Dear {{ current_user.first_name }}, Your reservation <a href="javascript:void(0)"> #84359804 </a> has been confirmed. Please check your mail for reservation invoice. Thanks for reserving our hotel! </p>
+                <p class="confirmation-contents-para"> Dear {{ current_user.first_name }}, Your reservation for <a href="javascript:void(0)"> {{ booking.room.room_type }} </a> has been confirmed. Please check your mail for reservation invoice. Thanks for reserving our hotel! </p>
                 <div class="btn-wrapper flex-btn mt-4 mt-lg-5">
-                    <a href="javascript:void(0)" class="cmn-btn btn-outline-1 color-one"> Back to Home </a>
-                    <a href="javascript:void(0)" class="cmn-btn btn-bg-1"> <span class="icon"><i class="las la-cloud-download-alt"></i></span> Download Invoice </a>
+                    <a href="{{ url_for('main_route.index')}}" class="cmn-btn btn-outline-1 color-one"> Back to Home </a>
+{#                    <a href="javascript:void(0)" class="cmn-btn btn-bg-1"> <span class="icon"><i class="las la-cloud-download-alt"></i></span> Download Invoice </a>#}
                 </div>
             </div>
         </div>

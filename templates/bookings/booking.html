@@ -28,7 +28,7 @@
             <div class="row g-4">
                 <div class="col-xl-8 col-lg-7">
                     <div class="checkout-wrapper">
-                        <form action="#">
+                        <form method="POST" action="{{ url_for('booking_route.checkout', room_id=request.args.get('room_id'), check_in_date=request.args.get('check_in_date'), check_out_date=request.args.get('check_out_date'), no_of_adults=request.args.get('no_of_adults'), no_of_children=request.args.get('no_of_children'), no_of_rooms=request.args.get('no_of_rooms')) }}">
                             <div class="checkout-single bg-white radius-10">
                                 <h4 class="checkout-title"> Booking Information </h4>
 
@@ -38,27 +38,27 @@
                                         <div class="input-flex-item">
                                             <div class="single-input mt-4">
                                                 <label class="label-title"> First Name </label>
-                                                <input class="form--control" type="text" name="first_name" placeholder="Type First Name">
+                                                <input class="form--control" type="text" name="first_name" placeholder="Type First Name" required>
                                             </div>
                                             <div class="single-input mt-4">
                                                 <label class="label-title"> Last Name </label>
-                                                <input class="form--control" type="text" name="last_name" placeholder="Type Last Name">
+                                                <input class="form--control" type="text" name="last_name" placeholder="Type Last Name" required>
                                             </div>
                                         </div>
                                         <div class="input-flex-item">
                                             <div class="single-input mt-4">
                                                 <label class="label-title"> Mobile Number </label>
-                                                <input class="form--control" id="phone" name="phone" type="tel" placeholder="Type Mobile Number">
+                                                <input class="form--control" id="phone" name="phone" type="tel" placeholder="Type Mobile Number" required>
                                             </div>
                                             <div class="single-input mt-4">
                                                 <label class="label-title"> Email Address </label>
-                                                <input class="form--control" type="text" name="email" placeholder="Type Email">
+                                                <input class="form--control" type="text" name="email" placeholder="Type Email" required>
                                             </div>
                                         </div>
                                         <div class="input-flex-item">
                                             <div class="single-input mt-4">
                                                 <label class="label-title"> Address </label>
-                                                <input class="form--control" type="text" name="address" placeholder="Type Address">
+                                                <input class="form--control" type="text" name="address" placeholder="Type Address" required>
                                             </div>
                                         </div>
 
@@ -66,7 +66,7 @@
                                                 <div class="single-input mt-4">
                                                     <label class="label-title"> Country </label>
                                                     <div class="banner-location-single-contents-dropdown">
-                                                        <select class="js-select" name="country">
+                                                        <select class="js-select" name="country" required>
                                                             {% for country in countries %}
                                                                 <option value="{{ country.id }}">{{ country.name }}</option>
                                                             {% endfor %}
@@ -76,7 +76,7 @@
                                                 <div class="single-input mt-4">
                                                     <label class="label-title"> State </label>
                                                     <div class="banner-location-single-contents-dropdown">
-                                                        <select class="js-select" name="state">
+                                                        <select class="js-select" name="state" required>
                                                             {% for state in states %}
                                                                 <option value="{{ state.id }}">{{ state.name }}</option>
                                                             {% endfor %}
@@ -86,7 +86,7 @@
                                                 <div class="single-input mt-4">
                                                     <label class="label-title"> City/Town </label>
                                                     <div class="banner-location-single-contents-dropdown">
-                                                        <select class="js-select" name="city">
+                                                        <select class="js-select" name="city" required>
                                                             {% for city in cities %}
                                                                 <option value="{{ city.id }}">{{ city.name }}</option>
                                                             {% endfor %}
@@ -113,44 +113,42 @@
                                         </div>
                                     </div>
                                     <div class="checkout-form custom-form">
-                                        <form action="#">
+                                        <div class="single-input mt-4">
+                                            <label class="label-title"> Card Number </label>
+                                            <input class="form--control input-padding-left" type="text" name="name" placeholder="Type Card Number">
+                                            <div class="input-icon"> <img src="{{ url_for('static', filename='assets/img/icons/card.svg') }}" alt="Icon"> </div>
+                                        </div>
+                                        <div class="input-flex-item">
                                             <div class="single-input mt-4">
-                                                <label class="label-title"> Card Number </label>
-                                                <input class="form--control input-padding-left" type="text" name="name" placeholder="Type Card Number">
-                                                <div class="input-icon"> <img src="{{ url_for('static', filename='assets/img/icons/card.svg') }}" alt="Icon"> </div>
+                                                <label class="label-title"> Expire Date </label>
+                                                <input class="form--control input-padding-left date-picker" placeholder="Select Expire Date">
+                                                <div class="input-icon"> <img src="{{ url_for('static', filename='assets/img/icons/calendar.svg') }}" alt="Icon"> </div>
                                             </div>
-                                            <div class="input-flex-item">
-                                                <div class="single-input mt-4">
-                                                    <label class="label-title"> Expire Date </label>
-                                                    <input class="form--control input-padding-left date-picker" placeholder="Select Expire Date">
-                                                    <div class="input-icon"> <img src="{{ url_for('static', filename='assets/img/icons/calendar.svg') }}" alt="Icon"> </div>
-                                                </div>
-                                                <div class="single-input mt-4">
-                                                    <label class="label-title"> CVV/CVC </label>
-                                                    <input class="form--control input-padding-left" type="number" name="name" placeholder="Type CVV/CVC">
-                                                    <div class="input-icon"> <img src="{{ url_for('static', filename='assets/img/icons/cvc.svg') }}" alt="Icon"> </div>
-                                                </div>
+                                            <div class="single-input mt-4">
+                                                <label class="label-title"> CVV/CVC </label>
+                                                <input class="form--control input-padding-left" type="number" name="name" placeholder="Type CVV/CVC">
+                                                <div class="input-icon"> <img src="{{ url_for('static', filename='assets/img/icons/cvc.svg') }}" alt="Icon"> </div>
                                             </div>
-                                            <div class="lock-contents mt-4">
-                                                <div class="lock-contents-icon">
-                                                    <img src="{{ url_for('static', filename='assets/img/icons/lock.svg') }}" alt="Icon">
-                                                </div>
-                                                <span class="lock-contents-para"> Information are encrypted with 256 bit SSL </span>
+                                        </div>
+                                        <div class="lock-contents mt-4">
+                                            <div class="lock-contents-icon">
+                                                <img src="{{ url_for('static', filename='assets/img/icons/lock.svg') }}" alt="Icon">
                                             </div>
-                                            <div class="guaranty-cancellation radius-10 mt-4">
-                                                <h4 class="guaranty-cancellation-title"> Guarantee & Cancellation </h4>
-                                                <p class="guaranty-cancellation-para"> Cancel 12 hours before checking-in time for a Free Cancellation. </p>
+                                            <span class="lock-contents-para"> Information are encrypted with 256 bit SSL </span>
+                                        </div>
+                                        <div class="guaranty-cancellation radius-10 mt-4">
+                                            <h4 class="guaranty-cancellation-title"> Guarantee & Cancellation </h4>
+                                            <p class="guaranty-cancellation-para"> Cancel 12 hours before checking-in time for a Free Cancellation. </p>
+                                        </div>
+                                        <div class="checkbox-wrap mt-4">
+                                            <div class="checkbox-inline">
+                                                <input class="check-input" type="checkbox" id="agree">
+                                                <label class="checkbox-label" for="agree"> I agree to the <a href="javascript:void(0)">Terms & Conditions</a> of <a href="javascript:void(0)">Staycation</a> </label>
                                             </div>
-                                            <div class="checkbox-wrap mt-4">
-                                                <div class="checkbox-inline">
-                                                    <input class="check-input" type="checkbox" id="agree">
-                                                    <label class="checkbox-label" for="agree"> I agree to the <a href="javascript:void(0)">Terms & Conditions</a> of <a href="javascript:void(0)">Staycation</a> </label>
-                                                </div>
-                                            </div>
-                                            <div class="btn-wrapper mt-4">
-                                                <button type="submit" class="cmn-btn btn-bg-1 btn-small"> Pay & Confirm </button>
-                                            </div>
-                                        </form>
+                                        </div>
+                                        <div class="btn-wrapper mt-4">
+                                            <button type="submit" class="cmn-btn btn-bg-1 btn-small"> Pay & Confirm </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

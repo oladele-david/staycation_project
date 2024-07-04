@@ -19,3 +19,6 @@ class Room(db.Model):
     hotel_id = db.Column(db.Integer, db.ForeignKey('hotels.id'), nullable=False)
     bookings = db.relationship('Booking', back_populates='room', lazy=True)
     hotel = db.relationship('Hotel', back_populates='rooms')
+
+    def __repr__(self):
+        return f"<Room '{self.room_type}'>"
