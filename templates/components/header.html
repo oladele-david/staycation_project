@@ -39,8 +39,8 @@
                             </div>
                             <div class="navbar-author-wrapper">
                                 <div class="navbar-author-wrapper-list">
-                                    <a href="signup.html" class="navbar-author-wrapper-list-item"> Dashboard </a>
-                                    <a href="login.html" class="navbar-author-wrapper-list-item"> Profile</a>
+                                    <a href="{{ url_for('user_route.dashboard') }}" class="navbar-author-wrapper-list-item"> Dashboard </a>
+                                    <a href="{{ url_for('user_route.profile') }}" class="navbar-author-wrapper-list-item"> Profile</a>
                                     <a href="{{ url_for('auth_route.logout') }}" class="navbar-author-wrapper-list-item"> Sign Out </a>
                                 </div>
                             </div>

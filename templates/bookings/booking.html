@@ -168,7 +168,7 @@
                                       <li class="list"> <span class="regular"> Total Stay </span> <span class="strong"> {{ total_days }} Days </span> </li>
                                       <li class="list"> <span class="regular"> Number of Person </span> <span class="strong"> {{ no_of_adults }} Person </span> </li>
                                       <li class="list"> <span class="regular"> Number of Children </span> <span class="strong"> {{ no_of_children }} Children </span> </li>
-                                      <li class="list"> <span class="regular"> Cost per Night </span> <span class="strong">  ₦{{ room_data.price_per_night }} </span> </li>
+                                      <li class="list"> <span class="regular"> Cost per Night </span> <span class="strong">  ₦{{ "{:,.2f}".format(room_data.price_per_night) }}</span> </li>
                                     </ul>
                                 </div>
                             </div>
@@ -178,11 +178,11 @@
                                 <h4 class="checkout-sidebar-title"> Invoice </h4>
                                 <div class="checkout-sidebar-contents">
                                     <ul class="checkout-flex-list list-style-none checkout-border-top pt-3 mt-3">
-                                        <li class="list"> <span class="regular"> Charge </span> <span class="strong"> ₦{{ total_price }} </span> </li>
+                                        <li class="list"> <span class="regular"> Charge </span> <span class="strong"> ₦{{ "{:,.2f}".format(total_price) }} </span> </li>
                                         <li class="list"> <span class="regular"> Discount </span> <span class="strong"> -₦0 </span> </li>
                                     </ul>
                                     <ul class="checkout-flex-list list-style-none checkout-border-top pt-3 mt-3">
-                                        <li class="list"> <span class="regular"> Total </span> <span class="strong color-one fs-20"> ₦{{ total_price }} </span> </li>
+                                        <li class="list"> <span class="regular"> Total </span> <span class="strong color-one fs-20"> ₦{{ "{:,.2f}".format(total_price) }} </span> </li>
                                     </ul>
 
                                 </div>

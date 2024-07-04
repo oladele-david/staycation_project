@@ -1,0 +1,218 @@
+<!-- templates/users/dashboard.html -->
+{% extends "base.html" %}
+
+{% block title %}Profile Dashboard | Staycation{% endblock %}
+
+{% block content %}
+
+    <!-- Breadcrumb area Starts -->
+    <div class="breadcrumb-area breadcrumb-padding">
+        <div class="container custom-container-one">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-contents">
+                        <h4 class="breadcrumb-contents-title"> Dashboard </h4>
+                        <ul class="breadcrumb-contents-list list-style-none">
+                            <li class="breadcrumb-contents-list-item"> <a href="{{ url_for('main_route.index') }}" class="breadcrumb-contents-list-item-link"> Home </a> </li>
+                            <li class="breadcrumb-contents-list-item"> Dashboard </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb area end -->
+
+    <!-- Dashboard area Starts -->
+    <div class="body-overlay"></div>
+    <div class="dashboard-area section-bg-2 dashboard-padding">
+        <div class="container">
+            <div class="dashboard-contents-wrapper">
+                <div class="dashboard-icon">
+                    <div class="sidebar-icon">
+                        <i class="las la-bars"></i>
+                    </div>
+                </div>
+
+                {% include 'components/dashboard_nav.html' %}
+
+
+                <div class="dashboard-right-contents mt-4 mt-lg-0">
+                    <div class="dashboard-promo">
+                        <div class="row gy-4 justify-content-center">
+                            <div class="col-xxl-4 col-xl-4 col-sm-6 orders-child">
+                                <div class="single-order">
+                                    <div class="single-order-flex">
+                                        <div class="single-order-contents">
+                                            <span class="single-order-contents-subtitle"> Pending Booking </span>
+                                            <h2 class="single-order-contents-title"> {{ pending_bookings | length }} </h2>
+                                        </div>
+                                        <div class="single-order-icon">
+                                            <i class="las la-history"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xxl-4 col-xl-4 col-sm-6 orders-child">
+                                <div class="single-order">
+                                    <div class="single-order-flex">
+                                        <div class="single-order-contents">
+                                            <span class="single-order-contents-subtitle"> Cancelled Booking </span>
+                                            <h2 class="single-order-contents-title"> {{ cancelled_bookings | length }} </h2>
+                                        </div>
+                                        <div class="single-order-icon">
+                                            <i class="las la-times-circle"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xxl-4 col-xl-4 col-sm-6 orders-child ">
+                                <div class="single-order bg-success">
+                                    <div class="single-order-contents">
+                                        <span class="single-order-contents-subtitle"> Confirmed Booking </span>
+                                        <h2 class="single-order-contents-title">{{ confirmed_bookings | length }} </h2>
+                                    </div>
+                                    <div class="single-order-icon">
+                                        <i class="las la-clipboard-check"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard-reservation">
+
+                        {% for booking in bookings %}
+
+                            <div class="single-reservation bg-white base-padding {% if loop.first %}show open{% endif %}">
+                                <div class="single-reservation-expandIcon"> <i class="las la-angle-down"></i> </div>
+                                <div class="single-reservation-head">
+                                    <div class="single-reservation-flex">
+                                        <div class="single-reservation-content">
+                                            <h5 class="single-reservation-content-title"> Booking ID </h5>
+                                            <span class="single-reservation-content-id"> #8{{ booking.booking_id }} </span>
+                                        </div>
+                                        <div class="single-reservation-btn">
+                                            <a href="javascript:void(0)" class="dash-btn btn-pending bg-dark"> {{ booking.booking_status }} </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="single-reservation-inner">
+                                    <div class="single-reservation-item">
+                                        <div class="single-reservation-name">
+                                            <h5 class="single-reservation-name-title"> {{ booking.last_name }} {{ booking.first_name}} </h5>
+                                            <p class="single-reservation-name-para"> (234) {{ booking.phone }} · {{ booking.address }}, {{ booking.state.name }}. </p>
+                                        </div>
+                                    </div>
+                                    <div class="single-reservation-item">
+                                        <div class="single-reservation-details">
+                                            <div class="single-reservation-details-item">
+                                                <span class="single-reservation-details-subtitle"> Check in </span>
+                                                <h5 class="single-reservation-details-title"> {{ booking.check_in_date.strftime('%d, %b %Y') }} </h5>
+                                            </div>
+                                            <div class="single-reservation-details-item">
+                                                <span class="single-reservation-details-subtitle"> Check Out </span>
+                                                <h5 class="single-reservation-details-title"> {{ booking.check_out_date.strftime('%d, %b %Y') }} </h5>
+                                            </div>
+                                            <div class="single-reservation-details-item">
+                                                <span class="single-reservation-details-subtitle"> Guests & Rooms </span>
+                                                <h5 class="single-reservation-details-title"> {{ booking.room.max_adult }} Adults, 2 Children, 3 Rooms </h5>
+                                            </div>
+                                            <div class="single-reservation-details-item">
+                                                <span class="single-reservation-details-subtitle"> Booked </span>
+                                                <h5 class="single-reservation-details-title"> {{ booking.booking_date.strftime('%d, %b %Y') }} </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="single-reservation-item">
+                                        <div class="single-reservation-flex">
+                                            <div class="single-reservation-content">
+                                                <h5 class="single-reservation-content-title"> Total Bill </h5>
+                                                <span class="single-reservation-content-price"> ₦{{ "{:,.2f}".format(booking.total_amount) }} </span>
+                                            </div>
+                                            <!-- div class="single-reservation-logoPrice">
+                                                <span class="single-reservation-logoPrice-thumb">
+                                                    <img src="assets/img/dashboard/mslogo.png" alt="img">
+                                                </span>
+                                                <span class="single-reservation-logoPrice-code"> ***9320 </span>
+                                            </div -->
+                                        </div>
+                                    </div>
+                                    <div class="single-reservation-item">
+                                        <div class="single-reservation-flex">
+                                            <div class="single-reservation-name">
+                                                <h5 class="single-reservation-name-title"> {{ booking.hotel.hotel_name }} ({{ booking.room.room_type }})</h5>
+                                                <p class="single-reservation-name-para"> {{ booking.hotel.address }} </p>
+                                            </div>
+                                            <div class="single-reservation-btn">
+                                                <a href="javascript:void(0)" class="dash-btn popup-click"> <i class="las la-exclamation-circle"></i> Cancel? </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+                    <!--div class="row mt-5">
+                        <div class="col">
+                            <div class="pagination-wrapper">
+                                <ul class="pagination-list list-style-none">
+                                    <li class="pagination-list-item-prev">
+                                        <a href="javascript:void(0)" class="pagination-list-item-button"> Prev </a>
+                                    </li>
+                                    <li class="pagination-list-item">
+                                        <a href="javascript:void(0)" class="pagination-list-item-link"> 1 </a>
+                                    </li>
+                                    <li class="pagination-list-item">
+                                        <a href="javascript:void(0)" class="pagination-list-item-link"> 2 </a>
+                                    </li>
+                                    <li class="pagination-list-item">
+                                        <a href="javascript:void(0)" class="pagination-list-item-link"> 3 </a>
+                                    </li>
+                                    <li class="pagination-list-item">
+                                        <a href="javascript:void(0)" class="pagination-list-item-link"> 4 </a>
+                                    </li>
+                                    <li class="pagination-list-item active">
+                                        <a href="javascript:void(0)" class="pagination-list-item-link"> 5 </a>
+                                    </li>
+                                    <li class="pagination-list-item-next">
+                                        <a href="javascript:void(0)" class="pagination-list-item-button"> Next </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Dashboard area end -->
+
+    <!-- popup start -->
+    <div class="popup-overlay"></div>
+    <div class="popup-fixed">
+        <div class="popup-contents popup-cancell-modal">
+            <h2 class="popup-contents-title"> Why do you want to cancel? </h2>
+            <div class="popup-contents-select">
+                <label class="popup-contents-select-label"> Choose a reason </label>
+                <div class="js-select">
+                    <select>
+                        <option value="1">Don't want to Book</option>
+                        <option value="2">Booked Accidentally</option>
+                        <option value="3">Don't want to Book</option>
+                    </select>
+                </div>
+            </div>
+            <div class="popup-contents-btn flex-btn">
+                <a href="javascript:void(0)" class="dash-btn popup-close"> <i class="las la-arrow-left"></i> Go Back </a>
+                <a href="javascript:void(0)" class="dash-btn btn-cancelled popup-close"> Cancel </a>
+            </div>
+        </div>
+    </div>
+    <!-- popup ends  -->
+
+
+{% endblock %}
+
