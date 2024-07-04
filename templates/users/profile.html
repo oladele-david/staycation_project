@@ -1,0 +1,128 @@
+<!-- templates/users/dashboard.html -->
+{% extends "base.html" %}
+
+{% block title %}Profile Dashboard | Staycation{% endblock %}
+
+{% block content %}
+
+    <!-- Breadcrumb area Starts -->
+    <div class="breadcrumb-area breadcrumb-padding">
+        <div class="container custom-container-one">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-contents">
+                        <h4 class="breadcrumb-contents-title"> Dashboard </h4>
+                        <ul class="breadcrumb-contents-list list-style-none">
+                            <li class="breadcrumb-contents-list-item"> <a href="{{ url_for('main_route.index') }}" class="breadcrumb-contents-list-item-link"> Home </a> </li>
+                            <li class="breadcrumb-contents-list-item"> Profile </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb area end -->
+
+    <!-- Dashboard area Starts -->
+    <div class="body-overlay"></div>
+    <div class="dashboard-area section-bg-2 dashboard-padding">
+        <div class="container">
+            <div class="dashboard-contents-wrapper">
+                <div class="dashboard-icon">
+                    <div class="sidebar-icon">
+                        <i class="las la-bars"></i>
+                    </div>
+                </div>
+
+                {% include 'components/dashboard_nav.html' %}
+
+
+                <div class="dashboard-right-contents mt-4 mt-lg-0">
+                    <div class="dashboard-reservation">
+                        <div class="single-reservation bg-white base-padding">
+                            <div class="single-reservation-flex mb-4">
+                                <div class="single-reservation-author">
+                                    <div class="single-reservation-author-flex">
+                                        <div class="single-reservation-author-thumb">
+                                            <img src="{{ url_for('static', filename='assets/img/avatar.png')}}" width="40px" alt="img">
+                                        </div>
+                                        <div class="single-reservation-author-contents">
+                                            <h5 class="single-reservation-author-contents-title"> {{ user_profile.first_name}}  {{ user_profile.last_name}}</h5>
+                                            <p class="single-reservation-author-contents-para"> Member since {{ user_profile.created_at.strftime('%Y')}} </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn-wrapper">
+                                    <a href="{{ url_for('user_route.update_profile') }}" class="cmn-btn btn-border"> Edit Profile </a>
+                                </div>
+                            </div>
+                            <div class="single-reservation-item">
+                                <div class="single-reservation-contact">
+                                    <div class="single-reservation-contact-item">
+                                        <span class="single-reservation-contact-list">
+                                            <span> <i class="las la-map-marker-alt"></i> </span>
+
+                                            {% if not user_profile.address_line1 %}
+                                                No address provided
+                                            {% else %}
+                                                {{ user_profile.address_line1}}
+                                            {% endif %}
+                                        </span>
+                                    </div>
+                                    <div class="single-reservation-contact-item">
+                                        <a href="mailto:nelso.norman@example.com" class="single-reservation-contact-list"> <span> <i class="las la-envelope"></i> </span>{{ user_profile.email}}</a>
+                                    </div>
+                                    <div class="single-reservation-contact-item">
+                                        <a href="tel:(208)5550112" class="single-reservation-contact-list"> <span> <i class="las la-phone-alt"></i> </span> ({{ user_profile.country.code}}) {{ user_profile.phone}} </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-reservation bg-white base-padding">
+                            <div class="single-reservation-flex">
+                                <div class="single-reservation-author">
+                                    <div class="single-reservation-author-flex">
+                                        <div class="single-reservation-author-contents">
+                                            <h5 class="single-reservation-author-contents-title"> Password </h5>
+                                            <!-- p class="single-reservation-author-contents-para"> Last change 4 month ago </p -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn-wrapper">
+                                    <a href="{{ url_for('user_route.update_password') }}" class="cmn-)btn btn-border"> Change Password </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Dashboard area end -->
+
+    <!-- popup start -->
+    <div class="popup-overlay"></div>
+    <div class="popup-fixed">
+        <div class="popup-contents popup-cancell-modal">
+            <h2 class="popup-contents-title"> Why do you want to cancel? </h2>
+            <div class="popup-contents-select">
+                <label class="popup-contents-select-label"> Choose a reason </label>
+                <div class="js-select">
+                    <select>
+                        <option value="1">Don't want to Book</option>
+                        <option value="2">Booked Accidentally</option>
+                        <option value="3">Don't want to Book</option>
+                    </select>
+                </div>
+            </div>
+            <div class="popup-contents-btn flex-btn">
+                <a href="javascript:void(0)" class="dash-btn popup-close"> <i class="las la-arrow-left"></i> Go Back </a>
+                <a href="javascript:void(0)" class="dash-btn btn-cancelled popup-close"> Cancel </a>
+            </div>
+        </div>
+    </div>
+    <!-- popup ends  -->
+
+
+{% endblock %}
+

@@ -11,6 +11,12 @@
                     </div>
 
                     <div class="login-wrapper-contents login-padding">
+
+                        <div class="justify-content-center">
+                            <a href="{{url_for('main_route.index')}}" class="logo ">
+                                <img src="{{ url_for('static', filename='assets/img/logo.png') }}" class="m-5" width="250px" alt="">
+                            </a>
+                        </div>
                         <h2 class="single-title"> Welcome to STAYCATION! </h2>
 
                         {% with messages = get_flashed_messages(with_categories=true) %}
