@@ -53,7 +53,7 @@ def register():
 
         if password != confirm_password:
             flash('Passwords do not match', 'danger')
-            return redirect(url_for('auth.register'))
+            return redirect(url_for('auth_route.register'))
 
         try:
             if User.query.filter_by(phone=phone).first():
@@ -75,12 +75,12 @@ def register():
         except SQLAlchemyError as e:
             db.session.rollback()  # Rollback the session in case of error
             flash('An error occurred while accessing the database. Please try again later.', 'danger')
-            return redirect(url_for('auth.register'))
+            return redirect(url_for('auth_route.register'))
 
         except Exception as e:
             db.session.rollback()  # Rollback the session in case of error
             flash('An unexpected error occurred. Please try again later.', 'danger')
-            return redirect(url_for('auth.register'))
+            return redirect(url_for('auth_route.register'))
 
     return render_template('auth/register.html')
 
