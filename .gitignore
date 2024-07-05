@@ -21,3 +21,6 @@ __pycache__/
 
 # Ignore qodana server-side analysis
 qodana.yaml
+
+# Ignore docker-compose file
+docker-compose.yml
